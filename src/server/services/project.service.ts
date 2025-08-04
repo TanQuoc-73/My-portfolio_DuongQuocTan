@@ -15,7 +15,10 @@ export async function getAllProjects(): Promise<(Project & { average_rating?: nu
   if (error) throw error;
 
   return data?.map(project => {
-    const ratings = project.project_comments?.map((c: any) => c.rating).filter(Boolean) || [];
+    const ratings = project.project_comments
+      ?.map((c: unknown) => (c as { rating: number }).rating)
+      .filter(Boolean) || [];
+
     const average_rating = ratings.length
       ? ratings.reduce((sum: number, r: number) => sum + r, 0) / ratings.length
       : 0;
