@@ -20,8 +20,9 @@ export function useAddProjectComment() {
       if (!json.success) throw new Error(json.message || 'Lỗi khi gửi bình luận');
       setLoading(false);
       return json.data as ProjectComment;
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : 'Lỗi gửi bình luận';
+      setError(message);
       setLoading(false);
       throw err;
     }

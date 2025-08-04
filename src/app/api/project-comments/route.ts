@@ -12,10 +12,9 @@ async function ensureUserExists(userId: string, email: string) {
     .single();
 
   if (!data) {
-    // Tạo user mới nếu chưa tồn tại
     const { error: insertError } = await supabase.from('users').insert({
       id: userId,
-      email: email,
+      email,
       created_at: new Date().toISOString(),
     });
     if (insertError) throw insertError;
@@ -34,18 +33,15 @@ export async function POST(request: Request) {
   }
 
   try {
-    // Đảm bảo user có bản ghi trong bảng users
     await ensureUserExists(user.id, user.email ?? '');
-
     const body = await request.json();
-
     const data = await addProjectComment({
       ...body,
-      author_id: user.id, // Lấy từ user đăng nhập
+      author_id: user.id,
     });
-
     return NextResponse.json({ success: true, data });
-  } catch (error: any) {
-    return NextResponse.json({ success: false, message: error.message || 'Lỗi server' }, { status: 500 });
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : 'Lỗi server';
+    return NextResponse.json({ success: false, message }, { status: 500 });
   }
 }
