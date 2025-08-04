@@ -4,19 +4,21 @@ import type { NextRequest } from 'next/server';
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { projectId: string } }
+  { params }: { params: Promise<{ projectId: string }> }
 ) {
-  if (!params || !params.projectId) {
+  const { projectId } = await params;
+
+  if (!projectId) {
     return NextResponse.json({ success: false, message: 'Missing projectId' }, { status: 400 });
   }
 
-  const projectId = parseInt(params.projectId, 10);
-  if (isNaN(projectId)) {
+  const projectIdNum = parseInt(projectId, 10);
+  if (isNaN(projectIdNum)) {
     return NextResponse.json({ success: false, message: 'Invalid projectId' }, { status: 400 });
   }
 
   try {
-    const data = await getCommentsByProject(projectId);
+    const data = await getCommentsByProject(projectIdNum);
     return NextResponse.json({ success: true, data });
   } catch (error: unknown) {
     const message = error instanceof Error ? error.message : 'Unknown error';
