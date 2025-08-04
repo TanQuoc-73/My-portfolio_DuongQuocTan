@@ -42,7 +42,7 @@ export default function Header() {
   return (
     <>
       {/* Header desktop: KHÔNG đổi gì so với bản gốc */}
-      <div className="absolute top-0 w-full h-[90px] bg-[#996633] flex justify-between items-center px-10 z-40">
+      <div className="sticky top-0 w-full h-[90px] bg-[#996633] flex justify-between items-center px-10 z-40">
         {/* Left */}
         <div className="LOGO flex items-center justify-center h-full">
           <Link href="/" className="text-white text-2xl flex items-center gap-2">
