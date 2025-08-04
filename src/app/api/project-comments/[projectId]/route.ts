@@ -3,8 +3,10 @@ import { getCommentsByProject } from '@/server/services/projectComment.service';
 
 export async function GET(
   req: Request,
-  { params }: { params: { projectId: string } }
+  context: { params: { projectId: string } }
 ) {
+  const { params } = context;
+
   if (!params || !params.projectId) {
     return NextResponse.json({ success: false, message: 'Missing projectId' }, { status: 400 });
   }
@@ -17,7 +19,7 @@ export async function GET(
   try {
     const data = await getCommentsByProject(projectId);
     return NextResponse.json({ success: true, data });
-  } catch (error) {
+  } catch (error: unknown) {
     const message = error instanceof Error ? error.message : 'Unknown error';
     return NextResponse.json({ success: false, message }, { status: 500 });
   }
