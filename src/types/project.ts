@@ -8,4 +8,6 @@ export interface Project {
   demo_url?: string;
   cover_url?: string;
   created_at?: string;
+
+  average_rating?: number;
 }
