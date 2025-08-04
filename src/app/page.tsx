@@ -8,7 +8,7 @@ export default function Home() {
   const { categories, loading, error } = useSkillCategories();
 
   return (
-    <div className="bg-white text-[#322410] min-h-screen pt-24 px-4 md:px-12 space-y-24 mt-10">
+    <div className="bg-white text-[#322410] min-h-screen pt-24 px-4 md:px-12 space-y-24">
       {/* Hero Intro */}
       <section
         className="bg-[#fff9f0] max-w-6xl mx-auto rounded-3xl shadow-lg flex flex-col md:flex-row items-center justify-between px-8 md:px-12 py-10 md:py-16 gap-8 animate-fade-slide-in"

@@ -5,7 +5,7 @@ import { FaFilePdf } from 'react-icons/fa';
 
 export default function MyPortfolio() {
   return (
-    <div className="bg-white text-[#322410] min-h-screen mt-15 py-10 px-10 w-full mx-auto rounded-lg shadow-lg flex flex-col items-center">
+    <div className="bg-white text-[#322410] min-h-screen py-10 px-10 w-full mx-auto rounded-lg shadow-lg flex flex-col items-center">
       <h2 className="text-4xl font-bold mb-6 text-[#996633] flex items-center gap-3">
         <FaFilePdf /> My CV
       </h2>
