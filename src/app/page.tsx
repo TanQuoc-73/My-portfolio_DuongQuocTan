@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { FaIdCard, FaProjectDiagram, FaCode, FaEnvelope } from 'react-icons/fa';
+import { FaIdCard, FaProjectDiagram, FaCode } from 'react-icons/fa';
 import { useSkillCategories } from '@/hooks/useSkillCategories';
 
 export default function Home() {

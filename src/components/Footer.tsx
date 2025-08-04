@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaGithub, FaLinkedin, FaEnvelope, FaTwitter } from 'react-icons/fa';
 import { BiBadge } from 'react-icons/bi';
+import Link from 'next/link';
 
 export default function Footer() {
   return (
@@ -14,18 +15,18 @@ export default function Footer() {
 
         {/* Quick Links */}
         <nav className="flex gap-6 flex-wrap text-[#996633] font-semibold">
-          <a href="/" className="hover:text-[#7a6348] transition">
+          <Link href="/" className="hover:text-[#7a6348] transition">
             Home
-          </a>
-          <a href="/projects" className="hover:text-[#7a6348] transition">
+          </Link>
+          <Link href="/projects" className="hover:text-[#7a6348] transition">
             Projects
-          </a>
-          <a href="/about" className="hover:text-[#7a6348] transition">
+          </Link>
+          <Link href="/about" className="hover:text-[#7a6348] transition">
             About
-          </a>
-          <a href="/contact" className="hover:text-[#7a6348] transition">
+          </Link>
+          <Link href="/contact" className="hover:text-[#7a6348] transition">
             Contact
-          </a>
+          </Link>
         </nav>
 
         {/* Social */}
