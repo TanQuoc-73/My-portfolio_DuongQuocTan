@@ -1,12 +1,11 @@
 import { NextResponse } from 'next/server';
 import { getCommentsByProject } from '@/server/services/projectComment.service';
+import type { NextRequest } from 'next/server';
 
 export async function GET(
-  req: Request,
-  context: { params: { projectId: string } }
+  req: NextRequest,
+  { params }: { params: { projectId: string } }
 ) {
-  const { params } = context;
-
   if (!params || !params.projectId) {
     return NextResponse.json({ success: false, message: 'Missing projectId' }, { status: 400 });
   }
